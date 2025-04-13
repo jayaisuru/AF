@@ -21,7 +21,7 @@ app.use('/api/auth', authRoutes);
 module.exports = app;
 
 if (require.main === module) {
-  mongoose.connect(process.env.MONGO_URI)
+  mongoose.connect('mongodb+srv://samarakoonlapjayaisuru:pqAbgm9FvihBI2iE@cluster0.flpfu.mongodb.net/')
     .then(() => console.log('MongoDB connected'))
     .catch(err => console.error('MongoDB error:', err));
 

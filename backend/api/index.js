@@ -1,5 +1,4 @@
-// api/index.js
 const serverless = require('serverless-http');
-const app = require('../server'); // import the exported Express app
+const app = require('../server');
 
-module.exports = serverless(app); // ✅ Default export required
+module.exports = serverless(app);

@@ -7,7 +7,7 @@ dotenv.config();
 
 const app = express();
 app.use(express.json());
-app.use(cors({ origin: 'http://af-countries-backend.vercel.app' }));
+app.use(cors({ origin: 'https://af-countries-backend-7u4s1cjx3-jayaisurus-projects.vercel.app' }));
 
 const authRoutes = require('./routes/auth');
 app.use('/api/auth', authRoutes);

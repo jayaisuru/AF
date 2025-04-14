@@ -23,7 +23,7 @@ const userSchema = new mongoose.Schema({
   email: {
     type: String,
     required: [true, 'Email is required'],
-    unique: true,
+    unique: true, // ✅ Keep this for index & uniqueness
     trim: true,
     lowercase: true,
     match: [/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/, 'Please enter a valid email address'],
@@ -31,14 +31,9 @@ const userSchema = new mongoose.Schema({
   phoneNumber: {
     type: String,
     // unique: true,
-    // sparse: true, // Allows null values to not conflict with uniqueness
-    // match: [/^\+?[1-9]\d{1,14}$/, 'Please enter a valid phone number (e.g., +1234567890)'],
-    // validate: {
-    //   validator: function (v) {
-    //     return v === null || /^\+?[1-9]\d{1,14}$/.test(v);
-    //   },
-    //   message: 'Invalid phone number format',
-    // },
+    // sparse: true,
+    // match: [/^\+?[1-9]\d{1,14}$/, 'Please enter a valid phone number'],
+    // validate: { ... }
   },
   password: {
     type: String,
@@ -62,7 +57,7 @@ const userSchema = new mongoose.Schema({
     default: Date.now,
   },
 }, {
-  timestamps: true, 
+  timestamps: true,
 });
 
 userSchema.pre('save', function (next) {
@@ -72,9 +67,10 @@ userSchema.pre('save', function (next) {
   next();
 });
 
-userSchema.index({ email: 1 });
-userSchema.index({ ussername: 1 });
-// userSchema.index({ phoneNumber: 1 });
+// ❌ Remove this line: it's a duplicate of email's `unique: true`
+// userSchema.index({ email: 1 });
 
+// ❌ You have a typo here: "ussername" instead of "username"
+userSchema.index({ username: 1 }); // ✅ fixed
 
 module.exports = mongoose.model('User', userSchema);

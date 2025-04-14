@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
 
-const API_BASE_URL = 'https://af-countries-backend.vercel.app/api/auth';
+const API_BASE_URL = 'af-countries-backend-marwzljxn-jayaisurus-projects.vercel.app/api/auth';
 
 function EditUser() {
   const [formData, setFormData] = useState({ username: '', email: '', password: '', role: '' });

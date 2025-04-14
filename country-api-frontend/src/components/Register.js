@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
-const API_BASE_URL = 'http://localhost:3000/api/auth';
+const API_BASE_URL = 'https://af-countries-backend-7u4s1cjx3-jayaisurus-projects.vercel.app/api/auth';
 
 function Register() {
   const [formData, setFormData] = useState({

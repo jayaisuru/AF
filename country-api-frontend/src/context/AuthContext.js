@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 
 const AuthContext = createContext();
 
-const API_BASE_URL = 'http://af-countries-frontend.vercel.app/api/auth';
+const API_BASE_URL = 'https://af-countries-backend-7u4s1cjx3-jayaisurus-projects.vercel.app/api/auth';
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);

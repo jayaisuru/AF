@@ -1,5 +1,5 @@
 // backend/api/index.js
 const serverless = require('serverless-http');
-const app = require('../server'); // this is your existing Express app
+const app = require('../server'); // just the app, no listener
 
-module.exports.handler = serverless(app);
+module.exports = serverless(app); // ✅ default export must be a function

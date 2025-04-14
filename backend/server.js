@@ -2,11 +2,9 @@
 const express = require('express');
 const app = express();
 
-// middleware, routes, etc.
+const routes = require('./routes'); // adjust if needed
 app.use(express.json());
+app.use('/', routes); // or just '/', depending on your app
 
-app.get('/api/test', (req, res) => {
-  res.json({ message: 'It works!' });
-});
+module.exports = app; // export the app instead of listening
 
-module.exports = app;

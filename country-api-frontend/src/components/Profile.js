@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const API_BASE_URL = 'https://af-countries-backend-7u4s1cjx3-jayaisurus-projects.vercel.app/api/auth';
+const API_BASE_URL = 'https://af-countries-backend.vercel.app/api/auth';
 
 function Profile() {
   const [user, setUser] = useState(null);

@@ -7,24 +7,21 @@ dotenv.config();
 
 const app = express();
 app.use(express.json());
-app.use(cors({ origin: 'https://af-countries-backend-7u4s1cjx3-jayaisurus-projects.vercel.app' }));
+app.use(cors({ origin: 'http://localhost:5173' }));
 
 const authRoutes = require('./routes/auth');
+
+
 app.use('/api/auth', authRoutes);
 
-// ✅ Always connect to MongoDB (no matter how this file is imported)
-mongoose.connect(process.env.MONGO_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-})
-  .then(() => console.log('✅ MongoDB connected'))
-  .catch(err => console.error('❌ MongoDB error:', err));
 
-// ✅ Export the app for serverless
 module.exports = app;
 
-// ✅ Optional: if run directly (for local dev)
 if (require.main === module) {
+  mongoose.connect(process.env.MONGO_URI)
+    .then(() => console.log('MongoDB connected'))
+    .catch(err => console.error('MongoDB error:', err));
+
   const PORT = process.env.PORT || 3000;
-  app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
+  app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 }

@@ -3,9 +3,6 @@ const router = express.Router();
 const { auth, adminOnly } = require('../middleware/auth');
 const authController = require('../controllers/AuthController');
 
-router.get('/', (req, res) => {
-    res.json({ message: 'Auth route is working' });
-  });
 // Authentication routes
 router.post('/register', authController.register);
 router.post('/login', authController.login);

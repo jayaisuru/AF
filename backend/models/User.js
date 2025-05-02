@@ -65,12 +65,16 @@ const userSchema = new mongoose.Schema({
   timestamps: true, 
 });
 
-userSchema.index({ email: 1 }, { unique: true });
-
 userSchema.pre('save', function (next) {
   if (this.isModified()) {
     this.updatedAt = Date.now();
   }
   next();
 });
+
+userSchema.index({ email: 1 });
+userSchema.index({ ussername: 1 });
+// userSchema.index({ phoneNumber: 1 });
+
+
 module.exports = mongoose.model('User', userSchema);

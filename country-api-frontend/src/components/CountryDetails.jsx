@@ -8,7 +8,7 @@ function CountryDetails() {
   const { user } = useContext(AuthContext);
 
   useEffect(() => {
-    fetch(`https://restcountries.com/v3.1/alpha/${code}`)
+    fetch(`https://restcountries.com/v2/alpha/${code}`)
       .then((response) => {
         if (!response.ok) {
           throw new Error('Failed to fetch country data');

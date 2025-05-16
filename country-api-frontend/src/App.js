@@ -1,3 +1,5 @@
+import logo from './logo.svg';
+import './App.css';
 import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import HeroSection from "./components/HeroSection";
@@ -9,8 +11,8 @@ import Footer from "./components/Footer";
 import Register from "./components/Register";
 import Login from "./components/Login";
 import Profile from "./components/Profile";
-
-const App = () => {
+import CountryDetails from "./components/CountryDetails";
+function App() {
   return (
     <>
       <Navbar />
@@ -32,11 +34,12 @@ const App = () => {
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/country/:code" element={<CountryDetails />} />
         </Routes>
         <Footer />
       </div>
     </>
   );
-};
+}
 
 export default App;

@@ -33,12 +33,10 @@ function CountryList() {
   }, []);
 
   const handleSearch = (data) => {
-    console.log('Search data:', data);
     setCountries(Array.isArray(data) ? data : []);
   };
 
   const handleFilter = (data) => {
-    console.log('Filter data:', data);
     setCountries(Array.isArray(data) ? data : []);
   };
 
@@ -47,29 +45,41 @@ function CountryList() {
 
   return (
     <div className="container mx-auto p-4">
-      <SearchBar onSearch={handleSearch} />
-      <Filter onFilter={handleFilter} />
-      <div className="row">
-        {countries.length === 0 ? (
-          <p>No countries found</p>
-        ) : (
-          countries.map((country) => (
-            <div key={country.cca3} className="col-md-4 mb-3">
-              <div className="card">
-                <img src={country.flags.png} alt={`${country.name.common} flag`} className="card-img-top" />
-                <div className="card-body">
-                  <h5 className="card-title">{country.name.common}</h5>
-                  <p>Capital: {country.capital?.[0] || 'N/A'}</p>
-                  <p>Population: {country.population.toLocaleString()}</p>
-                  <p>Region: {country.region}</p>
-                  <Link to={`/country/${country.cca3}`} className="btn btn-primary">
-                    View Details
-                  </Link>
-                </div>
-              </div>
+        <div className="flex flex-col md:flex-row justify-between items-center gap-4 mb-6">
+          <SearchBar onSearch={handleSearch} />
+          <Filter onFilter={handleFilter} />
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          {countries.length === 0 ? (
+            <p>No countries found</p>
+          ) : countries.map((country) => (
+        <div
+          key={country.alpha3Code}
+          className="bg-white shadow-md rounded-lg overflow-hidden flex flex-col border border-gray-200"
+        >
+          <img
+            src={country.flags.png}
+            alt={`${country.name} flag`}
+            className="h-48 w-full object-cover"
+          />
+          <div className="p-4 flex flex-col flex-grow text-gray-800">
+            <h5 className="text-lg font-bold mb-2 text-gray-900">{country.name}</h5>
+            <p><span className="font-semibold">Capital:</span> {country.capital || 'N/A'}</p>
+            <p><span className="font-semibold">Population:</span> {country.population.toLocaleString()}</p>
+            <p><span className="font-semibold">Region:</span> {country.region}</p>
+            <div className="mt-auto pt-4">
+              <Link
+                to={`/country/${country.alpha3Code}`} 
+
+                className="block text-center bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition-colors"
+              >
+                View Details
+              </Link>
             </div>
-          ))
-        )}
+          </div>
+        </div>
+      ))}
       </div>
     </div>
   );

@@ -4,7 +4,7 @@ function SearchBar({ onSearch }) {
   const handleSearch = (e) => {
     const query = e.target.value.trim();
     if (query.length > 2) {
-      fetch(`https://restcountries.com/v3.1/name/${query}`)
+      fetch(`https://restcountries.com/v2/name/${query}`)
         .then((response) => {
           if (!response.ok) {
             throw new Error('Network response was not ok');

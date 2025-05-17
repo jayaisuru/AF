@@ -24,9 +24,13 @@ function App() {
               <>
                 <HeroSection />
                 <FeatureSection />
-                {/* <CountryList /> */}
                 <Pricing />
                 <Testimonials />
+                <Route path="/countries" element={<CountryList />} />
+                <Route path="/register" element={<Register />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/profile" element={<Profile />} />
+                <Route path="/country/:code" element={<CountryDetails />} />
               </>
             }
           />
@@ -41,5 +45,21 @@ function App() {
     </>
   );
 }
+
+// function PrivateRoute({ component: Component }) {
+//   const { user, loading } = useContext(AuthContext);
+
+//   if (loading) {
+//     return (
+//       <div className="d-flex justify-content-center align-items-center vh-100">
+//         <div className="spinner-border text-primary" role="status">
+//           <span className="visually-hidden">Loading...</span>
+//         </div>
+//       </div>
+//     );
+//   }
+
+//   return user ? <Component /> : <Navigate to="/login" />;
+// }
 
 export default App;

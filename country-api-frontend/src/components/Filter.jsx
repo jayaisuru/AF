@@ -8,7 +8,7 @@ function Filter({ onFilter }) {
     if (region === "") {
       alert('Please select a valid region to filter by.');
     }else{
-      fetch(`https://restcountries.com/v3.1/region/${region}`)
+      fetch(`https://restcountries.com/v2/region/${region}`)
       .then((response) => response.json())
       .then((data) => onFilter(data))
       .catch((error) => console.error('Error filtering:', error));

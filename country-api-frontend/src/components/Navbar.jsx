@@ -34,6 +34,11 @@ const Navbar = () => {
                 Dashboard
               </a>
             </li>
+            <li className="nav-item">
+                  <a href="/countries" className="nav-link text-dark d-flex align-items-center">
+                    Countries
+                  </a>
+                </li>
             {user ? (
               <>
                 <li className="nav-item">

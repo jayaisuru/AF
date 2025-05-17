@@ -1,12 +1,14 @@
-import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext, useEffect, useState } from 'react';
+import { Link, Navigate } from 'react-router-dom';
 import SearchBar from '../components/SearchBar';
 import Filter from '../components/Filter';
+import { AuthContext } from '../context/AuthContext';
 
 function CountryList() {
   const [countries, setCountries] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  // const { user } = useContext(AuthContext);
 
   useEffect(() => {
     setLoading(true);
@@ -32,6 +34,9 @@ function CountryList() {
       });
   }, []);
 
+  // if (!user) {
+  //   return <Navigate to="/" replace />;
+  // }
   const handleSearch = (data) => {
     setCountries(Array.isArray(data) ? data : []);
   };

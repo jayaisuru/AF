@@ -5,7 +5,7 @@ import { AuthContext } from '../context/AuthContext';
 function CountryDetails() {
   const { code } = useParams();
   const [country, setCountry] = useState(null);
-  const { user } = useContext(AuthContext);
+  // const { user } = useContext(AuthContext);
 
   useEffect(() => {
     fetch(`https://restcountries.com/v2/alpha/${code}`)
@@ -21,9 +21,9 @@ function CountryDetails() {
       });
   }, [code]);
 
-  if (!user) {
-    return <Navigate to="/" replace />;
-  }
+  // if (!user) {
+  //   return <Navigate to="/" replace />;
+  // }
 
   if (!country) return <div className="text-center mt-5">Loading...</div>;
 

@@ -26,11 +26,6 @@ function App() {
                 <FeatureSection />
                 <Pricing />
                 <Testimonials />
-                <Route path="/countries" element={<CountryList />} />
-                <Route path="/register" element={<Register />} />
-                <Route path="/login" element={<Login />} />
-                <Route path="/profile" element={<Profile />} />
-                <Route path="/country/:code" element={<CountryDetails />} />
               </>
             }
           />
